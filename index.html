@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
 		<link rel="stylesheet" href="layui/css/layui.css" media="all">
+		<style type="text/css">
+			#a2 {
+				position: relative;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
 	</head>
+
 	<body>
+		<div class="layui-carousel" id="a2">
+			<div carousel-item="">
+				<div><img src="img/15.jpg"></div>
+				<div><img src="img/16.jpg"></div>
+				<div><img src="img/17.jpg"></div>
+			</div>
+		</div>
 		<h1>czf</h1>
 		<button type="button" class="layui-btn layui-btn-normal" id="a1">百搭按钮</button>
 	</body>
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="layui/layui.all.js"></script>
 	<script>
-		$("#a1").click(function(){
+		$("#a1").click(function() {
 			alert(11);
 		})
+		layui.use(['carousel', 'form'], function() {
+			var carousel = layui.carousel,
+				form = layui.form;
+
+			//改变下时间间隔、动画类型、高度
+			carousel.render({
+				elem: '#test2',
+				interval: 1800,
+				anim: 'fade',
+				height: '120px'
+			});
+
+			//图片轮播
+			carousel.render({
+				elem: '#a2',
+				width: '480px',
+				height: '280px',
+				interval: 5000
+			});
+
+			var $ = layui.$,
+				active = {
+					set: function(othis) {
+						var THIS = 'layui-bg-normal',
+							key = othis.data('key'),
+							options = {};
+						othis.css('background-color', '#5FB878').siblings().removeAttr('style');
+						options[key] = othis.data('value');
+						ins3.reload(options);
+					}
+				};
+
+			//监听开关
+			form.on('switch(autoplay)', function() {
+				ins3.reload({
+					autoplay: this.checked
+				});
+			});
+
+		});
 	</script>
+
 </html>
