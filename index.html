@@ -2,75 +2,1762 @@
 <html>
 
 	<head>
-		<meta charset="utf-8" />
-		<title></title>
-		<link rel="stylesheet" href="layui/css/layui.css" media="all">
-		<style type="text/css">
-			#a2 {
-				position: relative;
-				margin-left: auto;
-				margin-right: auto;
+		<meta charset="UTF-8">
+		<title>爱奇艺-全球领先的在线视频网站-海量正版高清视频在...</title>
+		<link rel="stylesheet" href="../css/Aqy.css" />
+
+		<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				//轮播图
+				var i = 0;
+				var ti;
+				$(".h2-left img").hide();
+				$(".h2-left img:first").show();
+				$(".h2-right ul a:first").css("color", "green");
+				ti = setInterval(show1, 3000);
+				$(".h2-right ul li").hover(function() {
+					clearInterval(ti);
+					var index = $(this).attr("class");
+					var index2 = index.substring(3, 4);
+					$(".h2-left img").hide();
+					$(".h2-left img:eq(" + (index2) + ")").show();
+					$(".h2-right ul a").css("color", "#ddd");
+					$(this).find("a").css("color", "green");
+				}, function() {
+					ti = setInterval(show1, 3000);
+				})
+
+				function show1() {
+					i = i + 1;
+					$(".h2-left img").hide();
+					$(".h2-left img:eq(" + (i) + ")").show();
+					$(".h2-right ul a").css("color", "#ddd");
+					$(".h2-right ul a:eq(" + (i) + ")").css("color", "green");
+					if(i == 9) {
+						i = -1;
+					}
+				}
+
+				//这边是弹出登录框
+				$(".h1-right ul li a:eq(0)").click(function() {
+					$(".denglu_1").show();
+				})
+				$(".denglu_1 img:eq(0)").click(function() {
+					$(".denglu_1").hide();
+				})
+				//设置二维码弹出时间及切换形态
+				setTimeout(change1, 10000);
+
+				function change1() {
+					$(".denglu_1 img:eq(1)").attr("src", "../img/denglu-1.jpg");
+				}
+				$(".denglu_1 img:eq(1)").click(function() {
+					$(this).attr("src", "../img/denglu_3.jpg");
+					setTimeout(change1, 10000);
+				})
+
+				//设置注册框
+
+				$(".h1-right ul li a:eq(1)").click(function() {
+					$(".denglu_2").show();
+				})
+
+				$(".denglu_2 img:eq(0)").click(function() {
+					$(".denglu_2").hide();
+				})
+				$(".denglu_1 a:eq(1)").click(function() {
+					$(".denglu_2").show();
+					$(".denglu_1").hide();
+				})
+				$(".denglu_2 #a1").click(function() {
+					$(".denglu_3").show();
+					$(".denglu_2").hide();
+				})
+				$(".denglu_2 #a2").click(function() {
+					$(".denglu_1").show();
+					$(".denglu_2").hide();
+				})
+				//设置帐号登录框
+				$(".denglu_1 a:eq(2)").click(function() {
+					$(".denglu_3").show()
+					$(".denglu_1").hide();
+				})
+				$(".denglu_3 img:eq(0)").click(function() {
+					$(".denglu_3").hide()
+				})
+				$(".denglu_3 .a34").click(function() {
+					$(".denglu_2").show();
+					$(".denglu_3").hide();
+				})
+				$(".denglu_3 .a31").click(function() {
+					$(".denglu_1").show();
+					$(".denglu_3").hide();
+				})
+				$(".denglu_3 .a32").click(function() {
+					$(".denglu_4").show();
+					$(".denglu_3").hide();
+				})
+
+				//其它方式登录框
+				$(".denglu_1 a:eq(3)").click(function() {
+					$(".denglu_4").show()
+					$(".denglu_1").hide();
+				})
+				$(".denglu_4 img:eq(0)").click(function() {
+					$(".denglu_4").hide()
+				})
+				$(".denglu_4 .a43").click(function() {
+					$(".denglu_2").show();
+					$(".denglu_4").hide();
+				})
+				$(".denglu_4 .a41").click(function() {
+					$(".denglu_3").show();
+					$(".denglu_4").hide();
+				})
+				$(".denglu_4 .a42").click(function() {
+					$(".denglu_1").show();
+					$(".denglu_4").hide();
+				})
+			})
+			//推荐
+			var i2 = 1;
+			var timer2;
+			$(function() {
+				$(".adver").css("background-image", "url(../img/adver0" + i2 + ".jpg)");
+				timer2 = setInterval("changeImg()", 2000);
+				$(".adver").mouseover(function() {
+					$(".arrowLeft,.arrowRight").show();
+					clearInterval(timer2);
+				}).mouseout(function() {
+					$(".arrowLeft,.arrowRight").hide();
+					timer2 = setInterval("changeImg()", 2000);
+				});
+				$(".arrowRight").click(function() {
+					changeImg();
+				});
+				$(".arrowLeft").click(function() {
+					i2 = i2 - 2;
+					changeImg();
+				});
+				$(".adver ul li").click(function() {
+					i2 = this.innerHTML;
+					i2--;
+					changeImg();
+				})
+
+			});
+
+			function changeImg() {
+				i2++;
+				if(i2 > 4) {
+					i2 = 1;
+				}
+				if(i2 < 1) {
+					i2 = 4;
+				}
+				$(".adver").css("background-image", "url(../img/adver0" + i2 + ".jpg)")
+				$(".adver ul li").css("background-color", "black");
+				$(".adver ul li:nth-of-type(" + i2 + ")").css("background-color", "orange");
 			}
-		</style>
+
+			var i3 = 0;
+			var timer3;
+			$(function() {
+				$("#leftmod2").hide();
+				setInterval(function() {
+					i3++;
+					if(i3 > 1) {
+						i3 = 0;
+					}
+					if(i3 < 0) {
+						i3 = 1;
+					}
+					if(i3 == 0) {
+						$("#leftmod2").hide();
+						$("#leftmod1").show();
+					}
+					if(i3 == 1) {
+						$("#leftmod2").show();
+						$("#leftmod1").hide();
+					}
+
+				}, 5000);
+			})
+
+			//单击登录提交
+			function loginCheck() {
+				var reg = /^1[3,5,7,8,9]{1}\d{9}|\w+@\w+\.\w+$/;
+				if(reg.test($(".denglu_3 input[name=user]").val())) {
+					$(".tip-info.tip-info-active").text("请输入手机号或邮箱")
+					$(".tip-info.tip-info-active").css("color", "#aaa");
+
+					$.ajax({
+						type: "post",
+						url: "http://localhost:8080/user/login.do",
+						async: true,
+						dataType: "json",
+						data: {
+							cardno: $(".denglu_3 input[name=user]").val(),
+							password: $(".denglu_3 input[name=pass]").val()
+
+						},
+						success: function(data) {
+
+							if(data == '账号不存在') {
+								$(".tip-info.tip-info-active").css("color", "red");
+								$(".tip-info.tip-info-active").text("账号不存在，请重新输入");
+
+							} else if(data == '密码错误') {
+								$(".tip-info.tip-info-pass").css("color", "red");
+								$(".tip-info.tip-info-pass").text("密码错误，请重新输入");
+
+							} else {
+								$(".h1-right li:first").html('')
+								$(".denglu_3").hide();
+								alert("登陆成功")
+							}
+
+						}
+					});
+				} else {
+					$(".tip-info.tip-info-active").text("账号或邮箱格式不正确，请重新输入")
+					$(".tip-info.tip-info-active").css("color", "red");
+				}
+			}
+			//判断是否满足提交条件
+			$(function() {
+				$(".denglu_3 input[name=user]").bind("input propertychange", function() {
+					if($(".denglu_3 input[name=user]").val() != '' && $(".denglu_3 input[name=pass]").val() != '') {
+						$(".denglu_3 input[name=login]").removeAttr("disabled");
+						$(".denglu_3 input[name=login]").css("background-color", "#5aa700");
+
+					} else {
+						$(".denglu_3 input[name=login]").attr("disabled", "disabled")
+						$(".denglu_3 input[name=login]").css("background-color", "#bcdd98");
+
+					}
+					if($(".denglu_3 input[name=user]").val() == '') {
+						$(".tip-info.tip-info-active").text("请输入手机号或邮箱")
+						$(".tip-info.tip-info-active").css("color", "#aaa");
+					}
+
+				})
+				$(".denglu_3 input[name=pass]").bind("input propertychange", function() {
+					if($(".denglu_3 input[name=user]").val() != '' && $(".denglu_3 input[name=pass]").val() != '') {
+						$(".denglu_3 input[name=login]").removeAttr("disabled");
+						$(".denglu_3 input[name=login]").css("background-color", "#5aa700");
+					} else {
+						$(".denglu_3 input[name=login]").attr("disabled", "disabled")
+						$(".denglu_3 input[name=login]").css("background-color", "#bcdd98");
+					}
+					if($(".denglu_3 input[name=pass]").val() == '') {
+						$(".tip-info.tip-info-pass").text("请输入密码")
+						$(".tip-info.tip-info-pass").css("color", "#aaa");
+					}
+				})
+			})
+
+			$(function() {
+				//账号输入栏提示文字
+				$(".tip-info.tip-info-active").click(function() {
+					$(".denglu_3 input[name=user]").focus();
+				})
+				//密码输入栏提示文字
+				$(".tip-info.tip-info-pass").click(function() {
+					$(".denglu_3 input[name=pass]").focus();
+				})
+
+			})
+
+			//账号栏得到焦点
+			function getFocus() {
+				var di = $(".tip-info.tip-info-active");
+				var user = $(".denglu_3 input[name=user]")
+				var fset = di.offset();
+				var ofuser = user.offset();
+				if(ofuser.top == fset.top) {
+					di.offset({
+						top: fset.top - 30,
+						left: fset.left
+					})
+				}
+
+			}
+			//账号栏失去焦点
+			function getBlur() {
+				var di = $(".tip-info.tip-info-active");
+				var fset = di.offset();
+				var user = $(".denglu_3 input[name=user]")
+				if(user.val() == '') {
+					di.offset({
+						top: fset.top + 30,
+						left: fset.left
+					})
+				}
+				var reg = /^1[3,5,7,8,9]{1}\d{9}|\w+@\w+\.\w+$/;
+				if(!reg.test($(".denglu_3 input[name=user]").val())) {
+					$(".tip-info.tip-info-active").text("账号或邮箱格式不正确，请重新输入")
+					$(".tip-info.tip-info-active").css("color", "red");
+				}
+			}
+			//密码栏得到焦点
+			function getPassFocus() {
+				var di = $(".tip-info.tip-info-pass");
+				var user = $(".denglu_3 input[name=pass]")
+				var fset = di.offset();
+				var ofuser = user.offset();
+				if(ofuser.top == (fset.top)) {
+					di.offset({
+						top: fset.top - 30,
+						left: fset.left
+					})
+				}
+			}
+			//密码栏失去焦点
+			function getPassBlur() {
+				var di = $(".tip-info.tip-info-pass");
+				var fset = di.offset();
+				var user = $(".denglu_3 input[name=pass]")
+				if(user.val() == '') {
+					di.offset({
+						top: fset.top + 30,
+						left: fset.left
+					})
+				}
+			}
+			//鼠标移到提交时变色
+			$(function() {
+				if($("input[type=button]").attr("disabled")) {
+					$("input[type=button]").hover(function() {
+						$("input[type=button]").css("background-color", "#63b700");
+					}, function() {
+						$("input[type=button]").css("background-color", "rgb(90, 167, 0)");
+					})
+				}
+			})
+			//下拉框
+			$(function() {
+				$(".kaitong").hide();
+				$(".kt").mouseover(function() {
+					$(".kaitong").show();
+				})
+				$(".kt").mouseout(function() {
+					$(".kaitong").hide();
+				})
+				$(".kaitong_0").mousemove(function() {
+					$(".kaitong").show();
+				})
+				$(".kaitong_0").mouseout(function() {
+					$(".kaitong").hide();
+				})
+
+				$(".shangchuan").hide();
+				$(".sc").mouseover(function() {
+					$(".shangchuan").show();
+				})
+				$(".sc").mouseout(function() {
+					$(".shangchuan").hide();
+				})
+				$(".shangchuan_0").mousemove(function() {
+					$(".shangchuan").show();
+				})
+				$(".shangchuan_0").mouseout(function() {
+					$(".shangchuan").hide();
+				})
+
+				$(".kehu").hide();
+				$(".kh").mouseover(function() {
+					$(".kehu").show();
+				})
+				$(".kh").mouseout(function() {
+					$(".kehu").hide();
+				})
+				$(".kehu_0").mousemove(function() {
+					$(".kehu").show();
+				})
+				$(".kehu_0").mouseout(function() {
+					$(".kehu").hide();
+				})
+			})
+		</script>
 	</head>
 
 	<body>
-		<div class="layui-carousel" id="a2">
-			<div carousel-item="">
-				<div><img src="img/15.jpg"></div>
-				<div><img src="img/16.jpg"></div>
-				<div><img src="img/17.jpg"></div>
+		<div id="boss">
+			<header>
+				<div class="h1-total">
+					<div class="h1">
+						<div class="h1-content">
+
+							<div class="h1-left">
+								<img src="../img/1.png" />
+							</div>
+							<div class="h1-middle">
+								<!--<span id="out1" class="in1">-->
+								<form action="" method="get">
+									<input type="text" autofocus="autofocus" placeholder="向往的生活" class="h1-m-input" />
+
+									<img src="../img/xj.png" / class="xj">
+									<!--</span>-->
+								</form>
+								<span id="out2" class="in2"> 
+							<img src="../img/soso.png"/><span class="soso" >搜全网</span>
+								</span>
+							</div>
+							<div class="h1-right">
+								<ul>
+
+									<li>
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/dl.png" /></p>
+										<a href="#">登录|</a>
+										<a href="#">注册</a>
+									</li>
+									<li>
+
+										<p><img src="../img/kt.png" /></p>
+										<a href="#" class="kt">开通</a>
+
+									</li>
+									<li>
+										<p><img src="../img/sc.png" /></p>
+										<a href="#" class="sc">上传</a>
+									</li>
+									<li>
+										<p><img src="../img/khd.png" /></p>
+										<a href="#" class="kh">客户端</a>
+									</li>
+									<li>
+										<p><img src="../img/xx.png" /></p>
+										<a href="#">消息</a>
+									</li>
+									<li>
+										<p><img src="../img/kg.png" /></p>
+										<a href="#">看过</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="h2">
+					<div class="h2-left">
+						<img src="../img/h_1.jpg" />
+						<img src="../img/h_2.jpg" />
+						<img src="../img/h_3.jpg" />
+						<img src="../img/h_4.jpg" />
+						<img src="../img/h_5.jpg" />
+						<img src="../img/h_6.jpg" />
+						<img src="../img/h_7.jpg" />
+						<img src="../img/h_8.jpg" />
+						<img src="../img/h_9.jpg" />
+						<img src="../img/h_10.jpg" />
+					</div>
+					<div class="h2-right">
+						<ul>
+							<li class="h2_0">
+								<a href="#">甜蜜暴击：鹿晗为梦想热血格斗</a>
+							</li>
+							<li class="h2_1">
+								<a href="#">延禧攻略:秦岚佘诗曼掀清宫风云 </a>
+							</li>
+							<li class="h2_2">
+								<a href="#">中国新说唱：艾热呛声制作人</a>
+							</li>
+							<li class="h2_3">
+								<a href="#">芸汐传：鞠婧祎撩翻张哲瀚</a>
+							</li>
+							<li class="h2_4">
+								<a href="#">猎毒人：缉毒夫妇联手打入楚门</a>
+							</li>
+							<li class="h2_5">
+								<a href="#">为了你：罗晋郑爽领证甜蜜同居</a>
+							</li>
+							<li class="h2_6">
+								<a href="#">国宝2：最皮国宝讲述8千年历史</a>
+							</li>
+							<li class="h2_7">
+								<a href="#">博物奇妙夜：孙茜探寻丝绸之路</a>
+							</li>
+							<li class="h2_8">
+								<a href="#">暑期档第二弹：是金子总会花光</a>
+							</li>
+							<li class="h2_9">
+								<a href="#">尽享渥太华，探索加拿大</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="h_1">
+					<ul>
+						<li>
+							<a href="#">娱乐</a>
+						</li>
+						<li>
+							<a href="#">体育</a>
+						</li>
+						<li>
+							<a href="#">资讯</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">电影</a>
+						</li>
+						<li>
+							<a href="#">片花</a>
+						</li>
+						<li>
+							<a href="#">网络电影</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">电视剧</a>
+						</li>
+						<li>
+							<a href="#">综艺</a>
+						</li>
+						<li>
+							<a href="#">脱口秀</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">动漫</a>
+						</li>
+						<li>
+							<a href="#">儿童</a>
+						</li>
+						<li>
+							<a href="#">教育</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">生活</a>
+						</li>
+						<li>
+							<a href="#">母婴</a>
+						</li>
+						<li>
+							<a href="#">健康</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">音乐</a>
+						</li>
+						<li>
+							<a href="#">时尚</a>
+						</li>
+						<li>
+							<a href="#">旅游</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">搞笑</a>
+						</li>
+						<li>
+							<a href="#">原创</a>
+						</li>
+						<li>
+							<a href="#">拍客</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">财经</a>
+						</li>
+						<li>
+							<a href="#">科技</a>
+						</li>
+						<li>
+							<a href="#">汽车</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">军事</a>
+						</li>
+						<li>
+							<a href="#">公益</a>
+						</li>
+						<li>
+							<a href="#">纪录片</a>
+						</li>
+					</ul>
+					<img src="../img/fengefu.png" />
+					<ul>
+						<li>
+							<a href="#">热点</a>
+						</li>
+						<li>
+							<a href="#">风云榜</a>
+						</li>
+						<li>
+							<a href="#">全网影视</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">奇秀直播</a>
+						</li>
+						<li>
+							<a href="#">直播中心</a>
+						</li>
+						<li>
+							<a href="#">应用商店</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">商城</a>
+						</li>
+						<li>
+							<a href="#">游戏</a>
+						</li>
+						<li>
+							<a href="#">游戏中心</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">大头</a>
+						</li>
+						<li>
+							<a href="#">爱奇艺号</a>
+						</li>
+						<li>
+							<a href="#">VR</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">文学</a>
+						</li>
+						<li>
+							<a href="#">漫画</a>
+						</li>
+						<li>
+							<a href="#">泡泡广场</a>
+						</li>
+					</ul>
+					<img src="../img/fengefu.png" />
+					<ul id="h_last">
+						<li> &nbsp;
+							<a href="#"><img src="../img/huiyuanjingxuan.png" / width="40px"><br />会员精选</a>
+						</li>
+					</ul>
+				</div>
+			</header>
+			<div id="tuijian">
+				<div class="a17">
+					<h2><img src="../img/08051.png"/><span class="a25">今日焦点</span>&nbsp;&nbsp;<span class="a24">更多></span></h2>
+					<dl>
+						<dt><img src="../img/08052.png" />国航接疑似恐怖信息返航  已抵达巴黎</dt>
+						<dd><img src="../img/08053.png" />希腊山林大火已致83人遇难&nbsp;&nbsp;|&nbsp;&nbsp;北极圈内现罕见30℃高温</dd>
+						<dd><img src="../img/08053.png" />华山长空栈道一男子解开安全绳跳崖 管委会：正在核实</dd>
+						<dd><img src="../img/08053.png" />女子众筹25万救女被曝有几套房 其女爆粗口怒怼网友</dd>
+					</dl>
+					<dl>
+						<dt><img src="../img/08052.png" />月全食火星大冲两奇观今夜明晨齐显现</dt>
+						<dd><img src="../img/08053.png" />全球多地共同观赏"血月"奇观 见证本世纪最长月全食</dd>
+						<dd><img src="../img/08053.png" />缅甸10月起对中国游客实施落地签&nbsp;&nbsp;|&nbsp;&nbsp;货车刹车失灵狂奔</dd>
+						<dd><img src="../img/08053.png" />女子坐错车当场发飙逼停公交 &nbsp;&nbsp;|&nbsp;&nbsp;2环卫排水作业被溅污水</dd>
+					</dl>
+				</div>
+				<div>
+					<dl class="a20">
+						<dt><img class="a18" src="../img/07281.jpg" /></dt>
+						<dd>
+							<p>女生地铁披婚纱男友求婚</p>
+						</dd>
+					</dl>
+					<dl class="a19">
+						<dt><img class="a18" src="../img/07282.jpg" /></dt>
+						<dd>
+							<p>西湖龙井茶树被高温烤焦</p>
+						</dd>
+					</dl>
+				</div>
+				<div class="adver">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+					</ul>
+					<div class="arrowLeft">
+						<</div>
+							<div class="arrowRight">></div>
+					</div>
+					<div class="a21">
+						<ul>
+							<li><img src="../img/08053.png" />经纬与赵又廷回顾"出道十年"&nbsp;&nbsp;|&nbsp;&nbsp;《药神》导演谈心得</li>
+							<li><img src="../img/08053.png" />陈伟霆所乘航班已安全返航&nbsp;&nbsp;|&nbsp;&nbsp;《一出好戏》幕后特辑</li>
+							<li><img src="../img/08053.png" />姚晨：拍《武林外传》是为生计&nbsp;&nbsp;|&nbsp;&nbsp;郑爽新男友正面曝光</li>
+							<li><img src="../img/08053.png" />宋茜黄子韬变水果姐弟&nbsp;&nbsp;|&nbsp;&nbsp;Alan Walker洗脑电音新单</li>
+							<li><img src="../img/08053.png" />正版授权汪汪队赛车玩具&nbsp;&nbsp;|&nbsp;&nbsp;迷你自拍杆买一送一</li>
+						</ul>
+					</div>
+					<div class="a22">
+						<dl>
+							<dt><img src="../img/07283.jpg"/></dt>
+							<dd><span class="a26">艾热李佳隆对唱撩全场</span></dd>
+						</dl>
+						<dl>
+							<dt><img src="../img/07284.jpg"/></dt>
+							<dd><span class="a26">陪你过暑假爽一夏！</span></dd>
+						</dl>
+						<dl>
+							<dt><img src="../img/07285.jpg"/></dt>
+							<dd><span class="a26">北漂歌手表白周杰伦：我爱你</span></dd>
+						</dl>
+						<dl>
+							<dt><img src="../img/07286.jpg"/></dt>
+							<dd><span class="a26">200只虾浓缩成这道精华</span></dd>
+						</dl>
+						<dl>
+							<dt><img src="../img/07287.jpg"/></dt>
+							<dd><span class="a26">今晚罗胖教你把自己嫁出去</span></dd>
+						</dl>
+						<dl>
+							<dt><img src="../img/07288.jpg"/></dt>
+							<dd><span class="a26">和海清在"小人国"里游荷兰</span></dd>
+						</dl>
+					</div>
+				</div>
+
+				<div class="aqy-zongyi">
+					<div class="aqy-zongyi-nei">
+						<div class="aqy-zongyi-left">
+							<div class="aqy-dianying-left-head">
+
+								<span class="qy-mod-icon1 movieshow1"></span>
+								<a href="#" target="_blank" title="综艺" class="link-txt">
+									<span class="biaoti">综艺</span>
+									<span class="biaoti">&nbsp;更多></span>
+								</a>
+								<div class="aqy-dianying-left-head-right">
+									<ul class="qy-mod-crumb">
+										<li>
+											<div class="crumb-link">
+												<a target="_blank" href="#" title="中国好声音">中国好声音</a>
+											</div>
+										</li>
+										<li>
+											<div class="crumb-link">
+												<i class="slash">/</i>
+												<a target="_blank" href="#" title="网络大电影">网络大电影</a>
+											</div>
+										</li>
+										<li>
+											<div class="crumb-link">
+												<i class="slash">/</i>
+												<a target="_blank" href="#" title="爱奇艺文艺院线">爱奇艺文艺院线</a>
+											</div>
+										</li>
+										<li>
+											<div class="crumb-link">
+												<i class="slash">/</i>
+												<a target="_blank" href="#" title="爱奇艺独播专区">爱奇艺独播专区</a>
+											</div>
+										</li>
+										<li>
+											<div class="crumb-link">
+												<i class="slash">/</i>
+												<a target="_blank" href="#" title="侏罗纪巨兽入侵城市">侏罗纪巨兽入侵城市</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+							<div id="kong">
+
+							</div>
+							<div class="aqy-zongyi-left-boot">
+								<div class="aqy-zongyi-left-boot-gif">
+									<div class="qy-mod-img horizon-big turn-slider" id="leftmod1">
+										<div class="qy-mod-link-img">
+											<a href="#" title="中国新说唱" target="_blank" class="qy-mod-link">
+												<img src="../img/10.jpg" class="qy-mod-cover fadeOutIn-enter-active" id="img" />
+												<div class="icon-tr">
+													<i class="qy-video-icon qy-video-self"></i>
+												</div>
+												<div class="icon-br">
+													<span class="qy-mod-label">
+											07-28期
+										</span>
+												</div>
+											</a>
+										</div>
+										<div class="qy-mod-link-txt">
+											<p class="main">
+												<a href="#" target="_blank" class="link-txt" title="中国新说唱：1v1对决">中国新说唱：1v1对决</a>
+											</p>
+											<p title="法老王以太合演说唱华尔兹 制作人再陷选择困境" class="sub">
+												法老王以太合演说唱华尔兹 制作人再陷选择困境
+											</p>
+										</div>
+									</div>
+									<div class="qy-mod-img horizon-big turn-slider" id="leftmod2">
+										<div class="qy-mod-link-img">
+											<a href="#" title="中国新说唱" target="_blank" class="qy-mod-link">
+												<img src="../img/5cd407aae12d414f83337ac06719e7c9.jpg" class="qy-mod-cover fadeOutIn-enter-active" id="img" />
+												<div class="icon-tr">
+													<i class="qy-video-icon qy-video-self"></i>
+												</div>
+												<div class="icon-br">
+													<span class="qy-mod-label">
+											07-28期
+										</span>
+												</div>
+											</a>
+										</div>
+										<div class="qy-mod-link-txt">
+											<p class="main">
+												<a href="#" target="_blank" class="link-txt" title="中国新说唱：1v1对决">中国新说唱：1v1对决</a>
+											</p>
+											<p title="法老王以太合演说唱华尔兹 制作人再陷选择困境" class="sub">
+												法老王以太合演说唱华尔兹 制作人再陷选择困境
+											</p>
+										</div>
+									</div>
+									<div class="qy-mod-img-turn">
+										<i class="qy-common-icon qy-common-pageleft32"></i>
+										<i class="qy-common-icon qy-common-pageright32"></i>
+									</div>
+								</div>
+								<div class="lines-wrap">
+									<div class="qy-mod-list mb" id="rightList1">
+										<ul id class="qy-mod-ul">
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="qy-mod-list" id="rightList2">
+										<ul id class="qy-mod-ul">
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+											<li class="qu-mod-li">
+												<div class="qy-mod-img horizon">
+													<div class="qy-mod-link-wrap1">
+														<a title="中国好声音" class="qy-mod-link1" href="#" target="_blank">
+															<img src="../img/4b6848703a3c4d5ea66f1a594eb58f3c.jpg" title="中国好声音" class="qy-mod-cover fadeOutIn-enter-active" />
+															<div class="icon-tr">
+																<i class="qy-video-icon qy-video-exc"></i>
+															</div>
+															<div class="icon-br">
+																<span class="qy-mod-label">
+													07-27期
+												</span>
+															</div>
+														</a>
+													</div>
+													<div class="title-wrap">
+														<p class="main">
+															<a href="#" target="_blank" class="link-txt" title="中国好声音">中国好声音</a>
+														</p>
+														<p title="李建抢人失败发明崩溃疗法" class="sub">
+															李建抢人失败发明崩溃疗法
+														</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mod-right qy-col-1" id="block-H" data-asyn-pb="true">
+							<div class="aqy-h2">
+								<a title="精彩推荐" href="#" target="_blank" class="link-txt">
+									<span class="qy-mod-text">精彩推荐</span>
+									<span class="more">更多></span>
+								</a>
+								<div class="qy-mod-nav-link">
+
+								</div>
+							</div>
+							<div class="qy-mod-rec">
+								<div class="qy-mod-img horizon" id="H_pic">
+									<div class="qy-mod-link-wrap1">
+										<a title="陈小春带小甜椒Jasper回归" class="qy-mod-link1" href="#" target="_blank">
+											<img src="../img/15b0a68a22ce47a9af9ad1e35abd8632.jpg" title="陈小春带小甜椒Jasper回归" class="qy-mod-cover fadeOutIn-enter-active" />
+
+										</a>
+									</div>
+									<div class="title-wrap1">
+										<p class="main">
+											<a href="#" target="_blank" class="link-txt" title="陈小春带小甜椒Jasper回归">陈小春带小甜椒Jasper回归</a>
+										</p>
+									</div>
+								</div>
+								<div class="list-wrap">
+									<ul id="txtList" class="txt-list">
+										<li class="txt-li">
+											<i class="arrow"></i>
+											<a href="#" target="_blank" title="谢霆锋不做厨师该教英语" class="txt-link">谢霆锋不做厨师该教英语</a>
+										</li>
+										<li class="txt-li">
+											<i class="arrow"></i>
+											<a href="#" target="_blank" title="谢霆锋不做厨师该教英语" class="txt-link">谢霆锋不做厨师该教英语</a>
+										</li>
+										<li class="txt-li">
+											<i class="arrow"></i>
+											<a href="#" target="_blank" title="谢霆锋不做厨师该教英语" class="txt-link">谢霆锋不做厨师该教英语</a>
+										</li>
+										<li class="txt-li">
+											<i class="arrow"></i>
+											<a href="#" target="_blank" title="谢霆锋不做厨师该教英语" class="txt-link">谢霆锋不做厨师该教英语</a>
+										</li>
+										<li class="txt-li">
+											<i class="arrow"></i>
+											<a href="#" target="_blank" title="谢霆锋不做厨师该教英语" class="txt-link">谢霆锋不做厨师该教英语</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<section class="sec1">
+					<div class="aqy-dianying">
+						<div class="aqy-dianying-nie">
+							<div class="aqy-dianying-left">
+								<div class="aqy-dianying-left-head">
+									<span class="qy-mod-icon movieshow"></span>
+									<a href="#" target="_blank" title="电影" class="link-txt">
+										<span class="biaoti">电影</span>
+										<span class="biaoti">&nbsp;更多></span>
+									</a>
+									<div class="aqy-dianying-left-head-right">
+										<ul class="qy-mod-crumb">
+											<li>
+												<div class="crumb-link">
+													<a target="_blank" href="#" title="爱奇艺爱电影">爱奇艺爱电影</a>
+												</div>
+											</li>
+											<li>
+												<div class="crumb-link">
+													<i class="slash">/</i>
+													<a target="_blank" href="#" title="网络大电影">网络大电影</a>
+												</div>
+											</li>
+											<li>
+												<div class="crumb-link">
+													<i class="slash">/</i>
+													<a target="_blank" href="#" title="爱奇艺文艺院线">爱奇艺文艺院线</a>
+												</div>
+											</li>
+											<li>
+												<div class="crumb-link">
+													<i class="slash">/</i>
+													<a target="_blank" href="#" title="爱奇艺独播专区">爱奇艺独播专区</a>
+												</div>
+											</li>
+											<li>
+												<div class="crumb-link">
+													<i class="slash">/</i>
+													<a target="_blank" href="#" title="侏罗纪巨兽入侵城市">侏罗纪巨兽入侵城市</a>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="aqy-dianying-left-co">
+									<ul class="qy-mod-ul">
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="牧野诡事之神仙眼" class="qy-mod-link" target="_blank">
+														<img src="../img/v_116375753_m_601_m1_260_360.jpg" alt="牧野诡事之神仙眼" />
+													</a>
+													<div class="icon-tr">
+														<img alt="牧野诡事之神仙眼" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">7.2</span>
+														<a title="牧野诡事之神仙眼" class="link-txt" href="#" target="_blank">
+															牧野诡事之神仙眼
+														</a>
+													</p>
+													<p title="摸金倒斗破王墓" class="sub">
+														摸金倒斗破王墓
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="厕所英雄" class="qy-mod-link" target="_blank">
+														<img src="../img/v_115724887_m_601_m5_260_360.jpg" alt="厕所英雄" />
+													</a>
+													<div class="icon-tr">
+														<img alt="厕所英雄" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.5</span>
+														<a title="厕所英雄" class="link-txt" href="#" target="_blank">
+															厕所英雄
+														</a>
+													</p>
+													<p title="新婚男为爱建厕所" class="sub">
+														新婚男为爱建厕所
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="伯德小姐" class="qy-mod-link" target="_blank">
+														<img src="../img/v_113606814_m_601_m4_260_360.jpg" alt="伯德小姐" />
+													</a>
+													<div class="icon-tr">
+														<img alt="伯德小姐" src="../img/vip_100001_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">7.5</span>
+														<a title="伯德小姐" class="link-txt" href="#" target="_blank">
+															伯德小姐
+														</a>
+													</p>
+													<p title="叛逆少女确丧青春" class="sub">
+														叛逆少女确丧青春
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="青年马克思" class="qy-mod-link" target="_blank">
+														<img src="../img/v_114615812_m_601_m3_260_360.jpg" alt="青年马克思" />
+													</a>
+													<div class="icon-tr">
+														<img alt="青年马克思" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">7.3</span>
+														<a title="青年马克思" class="link-txt" href="#" target="_blank">
+															青年马克思
+														</a>
+													</p>
+													<p title="马克思诞辰200周年" class="sub">
+														马克思诞辰200周年
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="像素大战" class="qy-mod-link" target="_blank">
+														<img src="../img/v_109777650_m_601_m4_260_360.jpg" alt="像素大战" />
+													</a>
+													<div class="icon-tr">
+														<img alt="像素大战" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.2</span>
+														<a title="像素大战" class="link-txt" href="#" target="_blank">
+															像素大战
+														</a>
+													</p>
+													<p title="街机游戏版“致青春”" class="sub">
+														街机游戏版“致青春”
+													</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="aqy-dianying-left-co1">
+									<ul class="qy-mod-ul">
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="环太平洋:雷霆再起" class="qy-mod-link" target="_blank">
+														<img src="../img/v_112855233_m_601_m7_260_360.jpg" alt="环太平洋:雷霆再起" />
+													</a>
+													<div class="icon-tr">
+														<img alt="环太平洋:雷霆再起" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.3</span>
+														<a title="环太平洋:雷霆再起" class="link-txt" href="#" target="_blank">
+															环太平洋:雷霆再起
+														</a>
+													</p>
+													<p title="景甜开挂拯救世界" class="sub">
+														景甜开挂拯救世界
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="邪不压正" class="qy-mod-link" target="_blank">
+														<img src="../img/v_117180662_m_601_m2_260_360.jpg" alt="邪不压正" />
+													</a>
+													<div class="icon-tr">
+														<img alt="邪不压正" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">7.0</span>
+														<a title="邪不压正" class="link-txt" href="#" target="_blank">
+															邪不压正
+														</a>
+													</p>
+													<p title="彭于晏化身屋顶特工" class="sub">
+														彭于晏化身屋顶特工
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="巨额来电" class="qy-mod-link" target="_blank">
+														<img src="../img/v_113702018_m_601_m4_260_360.jpg" alt="巨额来电" />
+													</a>
+													<div class="icon-tr">
+														<img alt="巨额来电" src="../img/vip_100001_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.8</span>
+														<a title="巨额来电" class="link-txt" href="#" target="_blank">
+															巨额来电
+														</a>
+													</p>
+													<p title="陈学冬解密诈骗" class="sub">
+														陈学冬解密诈骗
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="心花怒放" class="qy-mod-link" target="_blank">
+														<img src="../img/v_108739609_m_601_m9_260_360.jpg" alt="心花怒放" />
+													</a>
+													<div class="icon-tr">
+														<img alt="心花怒放" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.5</span>
+														<a title="心花怒放" class="link-txt" href="#" target="_blank">
+															心花怒放
+														</a>
+													</p>
+													<p title="黄渤徐峥大理玩命邂逅" class="sub">
+														黄渤徐峥大理玩命邂逅
+													</p>
+												</div>
+											</div>
+										</li>
+										<li class="qy-mod-li">
+											<div class="qy-mod-img vertical">
+												<div class="qy-mod-link-wrap">
+													<a href="#" title="美容针" class="qy-mod-link" target="_blank">
+														<img src="../img/v_112879006_m_601_m2_260_360.jpg" alt="美容针" />
+													</a>
+													<div class="icon-tr">
+														<img alt="美容针" src="../img/vip_100000_v_601_0_27.png" />
+													</div>
+												</div>
+												<div class="title-wrap">
+													<p class="main">
+														<span class="text-score">8.1</span>
+														<a title="美容针" class="link-txt" href="#" target="_blank">
+															美容针
+														</a>
+													</p>
+													<p title="闫妮恋上小鲜肉”" class="sub">
+														闫妮恋上小鲜肉
+													</p>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="aqy-dianying-right">
+								<div class="shuao">
+									<div class="aqy-h2">
+										<a title="电影榜" href="#" target="_blank" class="link-txt">
+											<span class="qy-mod-text">电影榜</span>
+											<span class="more">更多></span>
+										</a>
+										<div class="qy-mod-nav-link">
+
+										</div>
+									</div>
+									<div class="qy-mod-rank">
+
+										<ul class="s1">
+											<li class="rank-li">
+												<i class="num top1">1</i>
+												<a href="#" title="像素大战" target="_blank" class="text-link">像素大战</a>
+												<i class="qy-common-icon qy-common-rankUp"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top2">2</i>
+												<a href="#" title="厕所英雄" target="_blank" class="text-link">厕所英雄</a>
+												<i class="qy-common-icon qy-common-rankUp"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top3">3</i>
+												<a href="#" title="超时空同居" target="_blank" class="text-link">超时空同居</a>
+												<i class="qy-common-icon qy-common-rankUp"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">4</i>
+												<a href="#" title="精灵旅社2" target="_blank" class="text-link">精灵旅社2</a>
+												<i class="qy-common-icon qy-common-rankDown"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">5</i>
+												<a href="#" title="牧野诡事之神仙眼" target="_blank" class="text-link">牧野诡事之神仙眼</a>
+												<i class="qy-common-icon qy-common-rankDown"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">6</i>
+												<a href="#" title="逆战" target="_blank" class="text-link">逆战</a>
+												<i class="qy-common-icon qy-common-rankUnchg"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">7</i>
+												<a href="#" title="幕后玩家" target="_blank" class="text-link">幕后玩家</a>
+												<i class="qy-common-icon qy-common-rankUp"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">8</i>
+												<a href="#" title="唐人街探案2" target="_blank" class="text-link">唐人街探案2</a>
+												<i class="qy-common-icon qy-common-rankDown"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">9</i>
+												<a href="#" title="环太平洋:雷霆再起" target="_blank" class="text-link">环太平洋:雷霆再起</a>
+												<i class="qy-common-icon qy-common-rankUp"></i>
+											</li>
+											<li class="rank-li">
+												<i class="num top4">10</i>
+												<a href="#" title="红海行动" target="_blank" class="text-link">红海行动</a>
+												<i class="qy-common-icon qy-common-rankUnchg"></i>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="aqy-dianying-right-bottmo">
+									<div class="qy-mod-img vertical">
+										<div class="qy-mod-link-wrap">
+											<a href="#" title="缝纫机乐队" class="qy-mod-link" target="_blank">
+												<img src="../img/v_112879095_m_601_m5_260_360.jpg" alt="缝纫机乐队" />
+											</a>
+											<div class="icon-tr">
+												<img alt="缝纫机乐队" src="../img/vip_100000_v_601_0_27.png" />
+											</div>
+										</div>
+										<div class="title-wrap">
+											<p class="main">
+												<span class="text-score">8.3</span>
+												<a title="缝纫机乐队" class="link-txt" href="#" target="_blank">
+													缝纫机乐队
+												</a>
+											</p>
+											<p title="大鹏遭娜扎强吻" class="sub">
+												大鹏遭娜扎强吻
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="sec2">
+					<div class="a2">
+						<h2><img class="a13" src="../img/406190992237274103.png" />猜你喜欢</h2>
+						<div class="a3">
+							<dl>
+								<dt><img src="../img/v_117337360_m_601_m1_220_124.jpg" /></dt>
+								<dd>脑洞电影院</dd>
+								<dd>灾难片的地标建筑考究</dd>
+								<dd class="a5">07-13期</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_117271590_m_601_m1_220_124.jpg"/></dt>
+								<dd>欢乐囧图</dd>
+								<dd>丧尽天良</dd>
+								<dd class="a6">07-11期</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_114835727_m_601_m4_220_124.jpg"/></dt>
+								<dd>潜艇总动员：海底两万里</dd>
+								<dd>阿力的奇妙探险</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/a_100156702_m_601_m7_220_124.jpg"/></dt>
+								<dd>猎毒人</dd>
+								<dd>于和伟燃爆缉毒大戏</dd>
+								<dd class="a7">更新16集</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_117323401_m_601_220_124.jpg"/></dt>
+								<dd>唐唐说电影</dd>
+								<dd>佛系女神爱救人</dd>
+								<dd class="a8">07-12期</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/a_100155869_m_601_m5_220_124.jpg"/></dt>
+								<dd>机场等船</dd>
+								<dd>年轻人的迥异爱情故事</dd>
+								<dd class="a9">更新至7集</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/a_100159276_m_601_m5_220_124.jpg"/></dt>
+								<dd>岁岁年年柿柿红</dd>
+								<dd>女人撑起一片天</dd>
+								<dd class="a10">更新至15集</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_117381696_m_601_m1_220_124.jpg"/></dt>
+								<dd>江西都市60分</dd>
+								<dd>报告建议实行四天工作制</dd>
+								<dd class="a11">07-15期</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/a_100146833_m_601_m5_220_124.jpg"/></dt>
+								<dd>绝世宠婚之落跑甜心</dd>
+								<dd>用我一生爱你一世</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_117237014_m_601_m2_220_124.jpg"/></dt>
+								<dd>龙的新娘</dd>
+								<dd>龙太子寻爱受难记</dd>
+							</dl>
+							<dl>
+								<dt><img src="../img/v_117344133_m_601_m1_220_124.jpg"/></dt>
+								<dd>咪吱冷芝士</dd>
+								<dd>俄罗斯如何一枝独秀</dd>
+								<dd class="a12">07-13期</dd>
+							</dl>
+							<dl>
+								<dt><img class="a14" src="../img/857263451846598439.png"/></dt>
+								<dd class="a15">更多精彩内容</dd>
+								<dd class="a16">进去看看&gt;</dd>
+							</dl>
+						</div>
+					</div>
+				</section>
+				<footer>
+					<div class="fl_1">
+						<div class="b1">
+							<dl class="c1">
+								<dt><img class="tu1" src="../img/爱心.png"/></dt>
+								<dd>公益平台<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+						<div class="b2">
+							<dl class="c2">
+								<dt><img class="tu1" src="../img/爱奇艺.png"/></dt>
+								<dd>爱奇艺号<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+						<div class="b3">
+							<dl class="c3">
+								<dt><img class="tu1" src="../img/AD.png"/></dt>
+								<dd>广告频道<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+						<div class="b4">
+							<dl class="c4">
+								<dt><img class="tu1" src="../img/游戏.png"/></dt>
+								<dd>爱奇艺游戏<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+						<div class="b5">
+							<dl class="c5">
+								<dt><img class="tu1" src="../img/购物车.png"/></dt>
+								<dd class="z">爱奇艺应用商店<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+						<div class="b6">
+							<dl class="c6">
+								<dt><img class="tu1" src="../img/包.png"/></dt>
+								<dd>爱奇艺商城<img src="../img/箭头.png" /></dd>
+							</dl>
+						</div>
+					</div>
+					<img class="tupian" src="../img/foot_1.png" />
+					<div class="fl_4">
+						<div class="fl_2">
+							<dl>
+								<dt><span class="w2">合作伙伴</span><span class="w8">更多&gt;</span></dt>
+								<dd><span class="w1">万达电影网</span> <span class="w1">星美光线影业</span> <span class="w1">电影网</span> <span class="w1">华策影视</span></dd>
+								<dd><span class="w1">百度视频</span> <span class="w1">百度百科</span> <span class="w1">微博视频台</span> <span class="w1">百度贴吧</span> <span class="w1">央广网</span></dd>
+								<dd><span class="w1">hao123</span> <span class="w1">爱奇艺天猫店</span></dd>
+							</dl>
+						</div>
+						<div class="fl_3">
+							<dl>
+								<dt><span class="w2">爱奇艺动态</span> <span class="w8">更多&gt;</span></dt>
+								<dd><span class="w1">爱奇艺携手百信银行推出零钱Plus</span> <span class="w1">爱奇艺与京东达成独家战略合作</span></dd>
+								<dd><span class="w1">2018爱奇艺粉丝嘉年华开幕</span> <span class="w1">《热血街舞团》实现海外同步直播</span></dd>
+								<dd><span class="w1">爱奇艺正式在美国纳斯达克挂牌上市</span> <span class="w1">《琅琊榜之风起长林》26亿收官</span></dd>
+							</dl>
+						</div>
+						<div class="fl_5">
+							<dl>
+								<dd><span class="w3">京网文[2015]0652-282号-1</span> <span class="w3"><img src="../img/foot_2.png" />中国互联网诚信联盟</span> <span class="w3">出版物经营许可证</span> <span class="w3">信息网络传播视听节目许可证 0110544号</span></dd>
+								<dd><span class="w3">广播电视节目制作经营许可证(京)字第1938号</span><span class="w3">京ICP证110636号</span><span class="w3"><img src="../img/foot_3.png" />经营性网站备案信息</span> <span class="w3">京公网备11010802010263号</span></dd>
+								<dd><span class="w3">增值电信业务经营许可证B2-20120273</span> <span class="w3">互联网药物信息服务资格证书(京)-经营性-2013-0012</span>
+									<span class="w3">食品经营许可证 JY11108111598788</span></dd>
+							</dl>
+						</div>
+						<div class="fl_6">
+							<dl>
+								<dd class="w4">公司介绍 | 新闻动态 | Investor Relations | 联系方式 | 内容播放量计算标准 | 招聘英才 | 爱奇艺创新实验室 | 开放平台 | 爱奇艺内容合作标准 | 爱奇艺号 | 爱奇艺会员合作 |</dd>
+								<dd class="w5">安全应急响应中心 | 帮助中心 | 侵权中心 | 用户协议 | 隐私政策</dd>
+								<dd class="w6">中国互联网举报中心 网络举报APP下载 违法和不良信息举报电话：400-923-7171 举报邮箱：jubao@qiyi.com</dd>
+							</dl>
+						</div>
+						<div>
+							<dl>
+								<dd class="w7">反盗版和反盗链权利声明 Copyright © 2018 爱奇艺 All Rights Reserved</dd>
+							</dl>
+						</div>
+					</div>
+				</footer>
+				<div class="denglu_1">
+					<img src="../img/denglu_2.png" />
+					<img src="../img/denglu_3.jpg" />
+					<span>打开<a href="">爱奇艺手机APP</a><br />&nbsp;&nbsp;扫描二维码登录</span>
+					<a href="#">注册</a>
+					<a href="#">帐号密码登录 &nbsp;|</a>
+					<a href="#">其它方式登录</a>
+				</div>
+				<div class="denglu_2">
+					<img src="../img/denglu_2.png" />
+					<form action="#" method="get">
+						<div>
+							<select name="区域" required>
+								<option>美国/加拿大 &nbsp;&nbsp;+1</option>
+								<option>俄罗斯 &nbsp;&nbsp;+7</option>
+								<option>南非 &nbsp;&nbsp;+27</option>
+								<option>法国 &nbsp;&nbsp;+33</option>
+								<option selected>中国大陆 &nbsp;&nbsp;</option>
+							</select>
+							<input type="text" name="帐号" placeholder="请输入手机号" required/>
+						</div>
+
+						<span>
+					点击注册即表示您同意<a href="#">《用户协议》</a><a href="#">《隐私政策》</a>
+				</span>
+						<input type="submit" value="注册" disabled/>
+					</form>
+					<a id="a1" href="#">账号密码登录&nbsp;|</a>
+					<a id="a2" href="#">快速安全登录</a>
+				</div>
+				<div class="denglu_3">
+					<img src="../img/denglu_2.png" />
+					<form>
+						<select name="区域" required>
+							<option>美国/加拿大 &nbsp;&nbsp;+1</option>
+							<option>俄罗斯 &nbsp;&nbsp;+7</option>
+							<option>南非 &nbsp;&nbsp;+27</option>
+							<option>法国 &nbsp;&nbsp;+33</option>
+							<option selected>中国大陆 &nbsp;&nbsp;</option>
+						</select>
+
+						<p class="tip-info tip-info-active" style="display: block;">请输入手机号或邮箱</p>
+						<input type="text" name="user" onfocus="getFocus()" onblur="getBlur()" required/>
+
+						<p class="tip-info tip-info-pass" style="display: block;">请输入密码</p>
+						<input type="password" name="pass" onfocus="getPassFocus()" onblur="getPassBlur()" />
+						<input type="button" value="登录" name="login" onclick="loginCheck()" disabled/>
+					</form>
+					<a href="#" class="a34">注册</a>
+					<a class="a31" href="#">手机扫码登录&nbsp;|</a>
+					<a class="a32" href="#">快速安全登录</a>
+					<div class="d31">
+						<a class="a33">忘记密码</a>
+						<div class="d32">
+							<span>忘记密码了？</span><br />
+							<a>找回密码</a><br />
+							<a>短信登录</a><br />
+						</div>
+					</div>
+				</div>
+				<div class="denglu_4">
+					<img class="dl" src="../img/denglu_2.png" />
+					<p>其它登录方式</p>
+					<span>
+				<img src="../img/27.png"/>
+				<img src="../img/29.png"/>
+				<img src="../img/30.png"/>
+				<img src="../img/31.png"/>
+				<img src="../img/32.png"/>
+				<img src="../img/33.png"/>
+				</span>
+					<a href="denglu5.html" class="a44" target="_blank">短信登录</a>
+					<a href="#" class="a43">注册</a>
+					<a class="a41" href="#">账号密码登录&nbsp;|</a>
+					<a class="a42" href="#">手机扫码登录</a>
+				</div>
+				<div class="kaitong_0">
+
+					<div class="kaitong">
+						<ul>
+							<li>
+								<div>
+									<i class="kaitong1 kaitong2"></i>
+									<i class="kaitong5">了解VIP会员专享特权</i>
+								</div>
+							</li>
+							<li>
+								<div>
+									<i class="kaitong1 kaitong3"></i>
+									<i class="kaitong5">做任务，领奖励</i>
+								</div>
+							</li>
+							<li>
+								<div>
+									<i class="kaitong1 kaitong4"></i>
+									<i class="kaitong5">领取会员专属福利</i>
+								</div>
+							</li>
+							<li><button class="kaitong6">登录</button></li>
+						</ul>
+
+					</div>
+				</div>
+				<div class="shangchuan_0">
+					<div class="shangchuan">
+						<ul>
+							<li>
+								<i class="shangchuan1 shangchuan2"></i>
+								<a href="#">
+									<span>上传视频</span>
+								</a>
+							</li>
+							<li>
+								<i class="shangchuan1 shangchuan3"></i>
+								<a href="#">
+									<span>制作视频</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="shangchuan1 shangchuan4"></i>
+									<span>我的空间</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="shangchuan1 shangchuan5"></i>
+									<span>视频管理</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="shangchuan1 shangchuan6"></i>
+									<span>播放数据</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="shangchuan1 shangchuan7"></i>
+									<span>申请分成</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="kehu_0">
+				<div class="kehu">
+					<ul>
+						<li>
+							<i class="kehu1 kehu2"></i>
+							<a href="#">
+								<span>签到免广告，送VIP</span>
+							</a>
+						</li>
+						<li>
+							<i class="kehu1 kehu3"></i>
+							<a href="#">
+								<span>5倍流畅度，不卡顿</span>
+							</a>
+						</li>
+						<li>
+							<i class="kehu1 kehu4"></i>
+							<a href="#">
+								<span>1080P免费畅想</span>
+							</a>
+						</li>
+						<li>
+							<i class="kehu1 kehu5"></i>
+							<a href="#">
+								<span>搜不到视频，送VIP</span>
+							</a>
+						</li>
+						<li>
+							<button class="kehu6">立即体验</button>
+						</li>
+					</ul>
+				</div>
+				</div>
 			</div>
-		</div>
-		<h1>czf</h1>
-		<button type="button" class="layui-btn layui-btn-normal" id="a1">百搭按钮</button>
+
 	</body>
-	<script src="jquery-3.3.1.min.js"></script>
-	<script src="layui/layui.all.js"></script>
-	<script>
-		$("#a1").click(function() {
-			alert(11);
-		})
-		layui.use(['carousel', 'form'], function() {
-			var carousel = layui.carousel,
-				form = layui.form;
-
-			//改变下时间间隔、动画类型、高度
-			carousel.render({
-				elem: '#test2',
-				interval: 1800,
-				anim: 'fade',
-				height: '120px'
-			});
-
-			//图片轮播
-			carousel.render({
-				elem: '#a2',
-				width: '480px',
-				height: '280px',
-				interval: 5000
-			});
-
-			var $ = layui.$,
-				active = {
-					set: function(othis) {
-						var THIS = 'layui-bg-normal',
-							key = othis.data('key'),
-							options = {};
-						othis.css('background-color', '#5FB878').siblings().removeAttr('style');
-						options[key] = othis.data('value');
-						ins3.reload(options);
-					}
-				};
-
-			//监听开关
-			form.on('switch(autoplay)', function() {
-				ins3.reload({
-					autoplay: this.checked
-				});
-			});
-
-		});
-	</script>
 
 </html>
