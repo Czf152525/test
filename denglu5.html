@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>爱奇艺短信登录-爱奇艺</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			.denglu_5{
+				background-color:white  ;
+				height: 420px;
+				width: 454px;
+				position: relative;
+				margin: 0 auto;
+			}
+			.denglu_5 form{
+				margin-left:50px;
+			}
+			.denglu_5 select {
+				height: 35px;
+				border: none;
+				position: absolute;
+				top: 150px;
+				font-size: 18px;
+				width: 100px;
+				color: #666666;
+			}
+			.denglu_5 input[type=text]{
+				height: 35px;
+				border: none;
+				position: absolute;
+				top: 150px;
+				left:170px;
+				font-size: 18px;
+				border-bottom: 1px solid #666666;
+			}
+			.denglu_5 input[type=submit]{
+				position: absolute;
+				top: 270px;
+				left: 50px;
+				width: 350px;
+				height: 50px;
+				background-color:green ;
+				color: white;
+				border: none;
+				font-size:18px  ;
+				}
+			.denglu_5 p:nth-of-type(1){
+				color: #666666;
+				position: absolute;
+					top: 30px;
+					left: 190px;
+					font-size: 18px;
+			}
+			.denglu_5 p:nth-of-type(2){
+				color: #666666;
+				position: absolute;
+					top: 70px;
+					left: 60px;
+					font-size: 18px;
+			}
+			.denglu_5>a{
+				color: #666666;
+				font-size:15px ;
+				position: absolute;
+				left: 160px;
+				bottom: 10px;
+				text-decoration:none ;
+			}
+			.denglu_5>a:hover{
+				cursor: pointer;
+				color: green;
+			}
+			.out{
+				height: 80px;
+				background-color: white;
+				width: 1300px;
+				color: forestgreen;
+				font-weight:600;
+				font-size:17px; 
+				line-height:80px;
+			}
+			img{
+				vertical-align: middle;
+				margin-left: 180px;
+			}
+			a{
+				float: right;
+				margin-left:20px ;
+				color: grey;
+				font-weight: 400;
+				font-size: 13px;
+			
+			}
+			 .out a:nth-of-type(1){
+				margin-right:100px ;
+			}	
+			.boss{
+				background-color: #eff5ef;
+				width: 1300px;
+				height: 630px;
+				margin: 0 auto;
+			}
+			.denglu_5{
+				margin-top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="boss">
+			
+		
+		<div class="out">
+			<img src="../img/denglu_5.png"/>.短信登录
+			<a href="">注册</a>
+			<a href="">帐号登录</a>
+		</div>
+		<div class="denglu_5">
+			<p>短信登录</p>
+			<p>登录过程中会用到短信，请准备好您的手机</p>
+			<form action="#" method="get">
+					<select name="区域" required>
+						<option >美国/加拿大 &nbsp;&nbsp;+1</option>
+						<option >俄罗斯 &nbsp;&nbsp;+7</option>
+						<option >南非 &nbsp;&nbsp;+27</option>
+						<option >法国 &nbsp;&nbsp;+33</option>
+						<option selected >中国大陆 &nbsp;&nbsp;</option>
+					</select>
+					<input type="text" name="帐号" placeholder="请输入手机号" required/>
+					<input type="submit" value="下一步"/>
+			</form> 		
+				<a href="#">手机号不在使用？</a>	
+		</div>
+		</div>
+	</body>
+</html>
